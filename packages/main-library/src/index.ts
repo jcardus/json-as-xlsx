@@ -84,7 +84,12 @@ const applyColumnFormat = (worksheet: WorkSheet, columnIds: string[], columnForm
       const ref = utils.encode_cell({ r: row, c: column })
 
       if (worksheet[ref]) {
-        worksheet[ref].z = columnFormat
+        switch (columnFormat) {
+          case 'link':
+            worksheet[ref].l = { Target: worksheet[ref].v }
+          default:
+            worksheet[ref].z = columnFormat
+          }
       }
     }
   }
@@ -165,6 +170,7 @@ const getWorksheet = (jsonSheet: IJsonSheet, settings: ISettings): WorkSheet => 
 
   const worksheetColumnFormats = jsonSheet.columns.map((jsonSheetColumn) => jsonSheetColumn.format ?? null)
   applyColumnFormat(worksheet, worksheetColumnIds, worksheetColumnFormats)
+  formatLinks(worksheet, worksheetColumnIds, worksheetColumnFormats)
 
   worksheet["!cols"] = getWorksheetColumnWidths(worksheet, settings.extraLength)
 
