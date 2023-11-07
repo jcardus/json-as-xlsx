@@ -1,5 +1,5 @@
 {
-  "name": "json-as-xlsx",
+  "name": "@jcardus/json-as-xlsx",
   "version": "2.5.5",
   "license": "MIT",
   "main": "dist/index.js",
