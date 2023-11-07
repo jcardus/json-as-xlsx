@@ -85,8 +85,9 @@ const applyColumnFormat = (worksheet: WorkSheet, columnIds: string[], columnForm
 
       if (worksheet[ref]) {
         switch (columnFormat) {
-          case 'link':
+          case 'hyperlink':
             worksheet[ref].l = { Target: worksheet[ref].v }
+            break;
           default:
             worksheet[ref].z = columnFormat
           }
