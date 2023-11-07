@@ -170,7 +170,6 @@ const getWorksheet = (jsonSheet: IJsonSheet, settings: ISettings): WorkSheet => 
 
   const worksheetColumnFormats = jsonSheet.columns.map((jsonSheetColumn) => jsonSheetColumn.format ?? null)
   applyColumnFormat(worksheet, worksheetColumnIds, worksheetColumnFormats)
-  formatLinks(worksheet, worksheetColumnIds, worksheetColumnFormats)
 
   worksheet["!cols"] = getWorksheetColumnWidths(worksheet, settings.extraLength)
 
